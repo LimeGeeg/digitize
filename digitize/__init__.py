@@ -1,4 +1,18 @@
-digit_suffixes_en = {
+"""
+digitize - open source available library for determining the
+bit depth of a number with the output of its name.
+"""
+
+__title__ = "digitize"
+__author__ = "LimeGeeg"
+__license__ = "MIT"
+__copyright__ = "Copyright 2023-present LimeGeeg"
+__version__ = "1.2.0"
+
+from .digit_suffixes import DIGIT_SUFFIXES
+from .language import Language
+
+DIGIT_SUFFIXES_EN = {
     0: '',
     1: 'thousand',
     2: 'million',
@@ -53,7 +67,7 @@ digit_suffixes_en = {
     51: 'novemquadragintyl.',
 }
 
-digit_suffixes_ru = {
+DIGIT_SUFFIXES_RU = {
     0: '',
     1: 'тыс.',
     2: 'млн.',
@@ -108,30 +122,19 @@ digit_suffixes_ru = {
     51: 'новемквадрагинтил.',
 }
 
-class Exact:
-    def __init__():
-        pass
+def discharge(value: int, discharge_text_bool: bool = False, language: str = Language.EN):
+    result = ('{0:,}'.format(round(value, 2)).replace(',', ','))
+    discharge_text = "None"
 
-    def discharge(value, discharge_text_bool = False, language = "en"):
-
-        result = ('{0:,}'.format(round(value, 2)).replace(',', ','))
-        discharge_text = "None"
-
-        if discharge_text_bool in [True, "True", 1, "1", "yes"]:
-
-            digit = 1
+    if discharge_text_bool:
+        digit = 1
+        value = value // 10
+        while value > 0:
             value = value // 10
-            while value > 0:
-                value = value // 10
-                digit = digit + 1
+            digit = digit + 1
 
-            digit_suffixes = {}
+        digit_suffixes = DIGIT_SUFFIXES.get(language, {})
 
-            if language.lower() in ["english", "en"]:
-                digit_suffixes = digit_suffixes_en
-            else:
-                digit_suffixes = digit_suffixes_ru
+        discharge_text = digit_suffixes.get((digit - 1) // 3, '')
 
-            discharge_text = digit_suffixes.get((digit - 1) // 3, '')
-
-        return (result + f" {discharge_text}") if discharge_text_bool in [True, "True", 1, "1"] else (result)
+    return (result + f" {discharge_text}") if discharge_text_bool in [True, "True", 1, "1"] else (result)
