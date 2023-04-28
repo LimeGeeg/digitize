@@ -1,3 +1,3 @@
 class Language:
     EN = "en"
-	RU = "ru"
+    RU = "ru"

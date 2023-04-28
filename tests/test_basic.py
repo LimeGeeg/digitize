@@ -1,5 +1,4 @@
-import random
-
 from digitize import discharge, Language
 
-print(discharge(random.randint(0, 100000000), True, Language.RU))
+def test_basic():
+    assert discharge(100000000, True, Language.EN) == "100,000,000 million"

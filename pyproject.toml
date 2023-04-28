@@ -1,4 +1,8 @@
 [tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=7.3.1",
+]
 
 [project]
 name = "digitize"
@@ -7,7 +11,8 @@ description = "Open source available library for determining the bit depth of a 
 authors = [
     {name = "LimeGeeg", email = "borovoy06nik@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+]
 requires-python = ">=3.8"
 readme = "README.md"
 license = {text = "MIT"}

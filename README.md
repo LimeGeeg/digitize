@@ -2,11 +2,17 @@
 
 #### digitize - open source available library for determining the bit depth of a number with the output of its name
 
+Install using pip:
+```py
+pip install digitize
+```
+
+# Basic Usage
+
 ```python
-from digitize import Exact
+from digitize import discharge, Language
 
-var = Exact
-
-print(var.discharge(5000)) # Output: 5,000
-print(var.discharge(51030.4853)) # Output: 51,030.48
-print(var.discharge(51030.4853, True, "en/ru")) # Output: 51,030.48 thousand
+print(discharge(5000)) # Output: 5,000
+print(discharge(51030.4853)) # Output: 51,030.48
+print(discharge(51030.4853, True, Language.EN)) # Output: 51,030.48 thousand
+```
