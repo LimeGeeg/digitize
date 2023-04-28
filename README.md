@@ -16,3 +16,16 @@ print(discharge(5000)) # Output: 5,000
 print(discharge(51030.4853)) # Output: 51,030.48
 print(discharge(51030.4853, True, Language.EN)) # Output: 51,030.48 thousand
 ```
+
+# Contributing
+
+Install [PDM](https://pdm.fming.dev) and run the following:
+```
+pdm venv create
+pdm install
+```
+
+To run tests run:
+```
+pdm run pytest
+```
